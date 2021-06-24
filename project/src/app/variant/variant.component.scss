@@ -1,0 +1,116 @@
+:host {
+  margin: 20px;
+  width: 320px;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+
+.progress-container {
+  display: flex;
+  justify-content: center;
+  margin: 20px;
+  .protection-text {
+    position: absolute;
+    height: 100px;
+    margin-top: 70px;
+    font-size: 15pt;
+    text-align: center;
+    font-weight: 100;
+    color: #3e3e3e;
+  }
+}
+
+.metrics {
+  display: block;
+  width: 100%;
+  margin-top: 20px;
+  font-size: 15pt;
+  white-space: nowrap;
+  .line {
+    display: flex;
+  }
+  .title {
+    width: 55%;
+    font-weight: 200;
+  }
+  .value {
+    width: 45%;
+  }
+  .savings-value {
+    color: green;
+    font-weight: 500;
+  }
+  .savings-title {
+    font-weight: 500;
+  }
+  .savings-line {
+    font-size: 18pt;
+  }
+}
+
+.recommendation {
+  background-color: rgb(244, 255, 182, 0.2);
+}
+
+mat-button-toggle-group {
+  margin-top: 10px;
+  margin-bottom: 15px;
+  width: 100%;
+  mat-button-toggle {
+    width: 33%;
+  }
+}
+
+button.option {
+  width: 100%;
+  font-size: 14pt;
+  margin: 5px 0;
+  border: 1px solid #b5c0d8;
+  font-weight: 400;
+  background-color: white;
+}
+
+.selected {
+  background-color: #1150da !important;
+  color: white;
+  border: 1px solid #1150da;
+}
+
+p.title {
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
+.savings-container {
+  margin-top: 15px;
+}
+
+.evil {
+  color: red;
+}
+
+button.go {
+  background-color: green;
+  color: white;
+  font-size: 18pt;
+  width: 100%;
+  padding: 10px;
+}
+
+div.go-container {
+  margin-top: 20px;
+}
+
+div.best-offer {
+  width: 105px;
+  height: 30px;
+  font-size: 13pt;
+  background-color: red;
+  border-radius: 15px;
+  text-align: center;
+  padding-top: 9px;
+  color: white;
+  position: absolute;
+  top: -10px;
+  right: -10px;
+}

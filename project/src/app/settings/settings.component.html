@@ -1,0 +1,82 @@
+<!-- NUMBER OF PEOPLE -->
+<div *ngIf="settings">
+  <div class="line">
+    <div class="title">{{ settings.amountPeople }} People</div>
+    <mat-slider
+      [color]="'accent'"
+      thumbLabel
+      [displayWith]="formatLabel"
+      step="5"
+      min="5"
+      max="500"
+      aria-label="units"
+      [(ngModel)]="settings.amountPeople"
+      (change)="update()"
+    ></mat-slider>
+  </div>
+  <div class="line">
+    <div class="title">{{ settings.costDay }} Cost per absent day</div>
+    <mat-slider
+      thumbLabel
+      [displayWith]="formatLabel"
+      step="100"
+      min="1000"
+      max="2500"
+      aria-label="units"
+      [(ngModel)]="settings.costDay"
+      (change)="update()"
+    ></mat-slider>
+  </div>
+  <div class="line">
+    <div class="title">{{ settings.daysOff }} Days sick</div>
+    <mat-slider
+      thumbLabel
+      [displayWith]="formatLabel"
+      step="1"
+      min="1"
+      max="10"
+      aria-label="units"
+      [(ngModel)]="settings.daysOff"
+      (change)="update()"
+    ></mat-slider>
+  </div>
+  <div class="line">
+    <div class="title">{{ settings.amountRooms }} Rooms</div>
+    <mat-slider
+      thumbLabel
+      [displayWith]="formatLabel"
+      step="1"
+      min="1"
+      max="20"
+      aria-label="units"
+      [(ngModel)]="settings.amountRooms"
+      (change)="update()"
+    ></mat-slider>
+  </div>
+  <div class="line">
+    <div class="title">{{ settings.roomVolume }}m³ Room volume</div>
+    <mat-slider
+      thumbLabel
+      [displayWith]="formatLabel"
+      step="10"
+      min="10"
+      max="5000"
+      aria-label="units"
+      [(ngModel)]="settings.roomVolume"
+      (change)="update()"
+    ></mat-slider>
+  </div>
+  <div>
+    <button class="reset-button" mat-flat-button (click)="reset()">
+      Reset Defaults
+    </button>
+  </div>
+
+  <mat-slide-toggle
+    [(ngModel)]="settings.health"
+    (change)="update()"
+    class="perspective-slider"
+  >
+    perspective
+  </mat-slide-toggle>
+</div>

@@ -1,0 +1,25 @@
+<div *ngIf="!firstloaded">Loading...</div>
+<div [ngClass]="{ content: true, loading: !firstloaded }">
+  <div class="settings-container">
+    <div class="title-container">
+      <h1>STERI-LINE CALCULATOR</h1>
+      <p>
+        Unveil the health effects of Steri-Line tailored to your business
+        infrastructure! Use the settings to the right to alter the business
+        infrastructre
+      </p>
+    </div>
+    <mvp-settings (settingsChanged)="settingsChanged($event)"></mvp-settings>
+  </div>
+  <div class="centric">
+    <div [class]="['variants-container', perspecitveClass]">
+      <ng-container *ngFor="let bm of config; let i = index">
+        <mvp-variant
+          [businessModel]="bm"
+          [meta]="meta"
+          [class]="['variant-' + i, bm?.name]"
+        ></mvp-variant
+      ></ng-container>
+    </div>
+  </div>
+</div>

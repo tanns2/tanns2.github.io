@@ -1,0 +1,102 @@
+/* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background-color: rgb(250, 250, 250);
+}
+
+$healthNo: lightgray;
+$healthMask: rgb(181, 192, 216);
+$healthFFP2: rgb(140, 162, 207);
+$heatlhSteri: rgb(17, 80, 218);
+
+$sickNo: rgb(218, 17, 67);
+$sickMask: rgb(207, 140, 140);
+$sickFFP2: rgb(216, 181, 181);
+$sickSteri: lightgray;
+
+.mvp-perspective-health {
+  .NOTHING {
+    .mat-progress-spinner circle,
+    .mat-spinner circle {
+      stroke: $healthNo !important;
+    }
+  }
+  .REGULAR_MASK {
+    .mat-progress-spinner circle,
+    .mat-spinner circle {
+      stroke: $healthMask !important;
+    }
+  }
+  .FFP2_MASK {
+    .mat-progress-spinner circle,
+    .mat-spinner circle {
+      stroke: $healthFFP2 !important;
+    }
+  }
+  .STERI_AIR {
+    .mat-progress-spinner circle,
+    .mat-spinner circle {
+      stroke: $heatlhSteri !important;
+    }
+  }
+}
+
+.mvp-perspective-sick {
+  .NOTHING {
+    .mat-progress-spinner circle,
+    .mat-spinner circle {
+      stroke: $sickNo !important;
+    }
+  }
+  .REGULAR_MASK {
+    .mat-progress-spinner circle,
+    .mat-spinner circle {
+      stroke: $sickMask !important;
+    }
+  }
+  .FFP2_MASK {
+    .mat-progress-spinner circle,
+    .mat-spinner circle {
+      stroke: $sickFFP2 !important;
+    }
+  }
+  .STERI_AIR {
+    .mat-progress-spinner circle,
+    .mat-spinner circle {
+      stroke: $sickSteri !important;
+    }
+  }
+}
+
+.hidden {
+  display: none !important;
+}
+
+mvp-variant {
+  mat-card {
+  }
+}
+
+.mat-card-header-text {
+  margin: 0 !important;
+}
+.mat-card-title {
+  font-size: 23px !important;
+  margin-bottom: 15px !important;
+}
+
+
+/* CSS to change 'Primary' color */
+
+.mat-slide-toggle.mat-primary.mat-checked:not(.mat-disabled) .mat-slide-toggle-thumb {
+  background-color: green;
+}
+.mat-slide-toggle.mat-primary.mat-checked:not(.mat-disabled) .mat-slide-toggle-bar {
+  background-color: #ff99ff;
+}

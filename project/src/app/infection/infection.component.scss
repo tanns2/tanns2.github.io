@@ -1,0 +1,38 @@
+.infections-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.person {
+  width: 10px;
+  height: 10px;
+  background-color: lightgray;
+  margin: 3px;
+  border-radius: 5px;
+}
+
+.health-perspective {
+  .infected {
+    background-color: white;
+    .icon {
+      color: lightgray;
+    }
+  }
+  .person:not(.infected) {
+    background-color: rgb(17, 80, 218);
+    background-color: #1150da99;
+    .icon {
+      display: none;
+    }
+  }
+}
+
+.icon {
+  margin: 0;
+  padding: 0;
+  width: 10px;
+  height: 10px;
+  margin-top: -3px;
+  position: absolute;
+  font-size: 11pt;
+}

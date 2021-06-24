@@ -1,0 +1,174 @@
+<mat-card
+  *ngIf="meta"
+  [ngClass]="{
+    recommendation: recommendation === businessModel?.friendlyName
+  }"
+>
+  <mat-card-header>
+    <mat-card-title
+      >{{ businessModel?.friendlyName }}
+      <div
+        class="best-offer"
+        *ngIf="recommendation === businessModel?.friendlyName"
+      >
+        Best Offer
+      </div>
+    </mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <div class="progress-container">
+      <mat-progress-spinner
+        [mode]="'determinate'"
+        [value]="
+          meta.perspective === 'HEALTH'
+            ? friendlyProtection
+            : 100 - friendlyProtection
+        "
+        [diameter]="200"
+      >
+      </mat-progress-spinner>
+      <div class="protection-text">
+        <ng-container *ngIf="meta.perspective === 'SICK'">
+          <div>{{ 100 - friendlyProtection }}%</div>
+          <div>fall sick</div>
+        </ng-container>
+        <ng-container *ngIf="meta.perspective === 'HEALTH'">
+          <div>{{ friendlyProtection }}%</div>
+          <div>stay healthy</div>
+        </ng-container>
+      </div>
+    </div>
+
+    <div class="infection-container" *ngIf="!meta.hideInfections">
+      <mvp-infection
+        [people]="meta.people"
+        [protection]="businessModel.protection"
+        [infections]="infections"
+      ></mvp-infection>
+    </div>
+
+    <div class="metrics">
+      <!-- INFECTED -->
+      <div class="line">
+        <div class="title">Infected</div>
+        <div class="value">{{ infections }} People</div>
+      </div>
+      <div class="line">
+        <div class="title">Healthy</div>
+        <div class="value">{{ meta.people - infections }} People</div>
+      </div>
+      <!-- FTE -->
+      <div class="line">
+        <div class="title">Missing FTEs</div>
+        <div class="value">{{ totalDaysOff | number: "1.0-0" }}</div>
+      </div>
+      <!-- DEVICES -->
+      <div
+        class="line"
+        [ngClass]="{
+          hidden: hidden
+        }"
+      >
+        <div class="title">Amount Devices</div>
+        <div class="value">
+          {{ suggestedAmountDevices }}
+        </div>
+      </div>
+      <!-- COSTS -->
+      <div class="line">
+        <div class="title">Costs</div>
+        <div class="value">
+          CHF {{ totalCostDueSick | number: "1.0-0" | thousands }}
+        </div>
+      </div>
+
+      <ng-container *ngIf="recommendation === businessModel?.friendlyName">
+        <hr *ngIf="!hidden" />
+
+        <p *ngIf="!hidden" class="title">Billing Plan</p>
+
+        <mat-button-toggle-group [(ngModel)]="feeing" *ngIf="!hidden">
+          <mat-button-toggle value="yearly" class="option"
+            >Yearly</mat-button-toggle
+          >
+          <mat-button-toggle value="monthly" class="option"
+            >Monthly</mat-button-toggle
+          >
+          <mat-button-toggle value="weekly" class="option"
+            >Weekly</mat-button-toggle
+          >
+        </mat-button-toggle-group>
+
+        <p *ngIf="!hidden" class="title">Offers</p>
+
+        <ng-container *ngFor="let renting of rentings">
+          <div class="fees" *ngIf="!hidden">
+            <!--<div class="line" *ngIf="!hidden && prices && prices[renting.type]">
+              <div class="title">{{ renting.title }}</div>
+              <div class="value">
+                CHF
+                {{ prices[renting.type][feeing] | number: "1.0-0" | thousands }}
+              </div>
+            </div>-->
+            <button
+              mat-button
+              color="primary"
+              class="option"
+              [ngClass]="{ selected: option === renting.type }"
+              (click)="selectOption(renting.type)"
+            >
+              {{ renting.title }} CHF
+              {{ prices[renting.type][feeing] | number: "1.0-0" | thousands }}
+            </button>
+          </div>
+        </ng-container>
+
+        <ng-conatiner *ngIf="option">
+          <hr *ngIf="!hidden" />
+          <div
+            class="savings-container"
+            [ngClass]="{
+              'savings-container': true === true
+            }"
+          >
+            <!-- SAVINGS -->
+            <div class="line savings-line" *ngIf="!hidden">
+              <div class="title savings-title">Savings</div>
+              <div
+                [ngClass]="{
+                  value: true === true,
+                  'savings-value': !(
+                    prices[option].savings < 0 || prices[option].roi < 0
+                  ),
+                  evil: prices[option].savings < 0 || prices[option].roi < 0
+                }"
+              >
+                CHF
+                {{ prices[option].savings | number: "1.0-0" | thousands }}
+              </div>
+            </div>
+            <!-- ROI -->
+            <div class="line" *ngIf="!hidden">
+              <div class="title savings-title">ROI</div>
+              <div
+                [ngClass]="{
+                  value: true === true,
+                  'savings-value': !(
+                    prices[option].savings < 0 || prices[option].roi < 0
+                  ),
+                  evil: prices[option].savings < 0 || prices[option].roi < 0
+                }"
+              >
+                {{ prices[option].roi | number: "1.0-1" }}
+              </div>
+            </div>
+          </div>
+
+          <div class="go-container">
+            <button class="go" mat-raised-button>Add to Cart</button>
+          </div>
+        </ng-conatiner>
+      </ng-container>
+    </div>
+  </mat-card-content>
+</mat-card>
