@@ -1,0 +1,19 @@
+{
+  "data": [
+    {
+      "name": "STERI-DESK oval",
+      "price": 2781,
+      "power": 130
+    },
+    {
+      "name": "STERI-DESK cube",
+      "price": 3059,
+      "power": 180
+    },
+    {
+      "name": "STERI-MOVE",
+      "price": 3245,
+      "power": 220
+    }
+  ]
+}
